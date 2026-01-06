@@ -2,7 +2,7 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
 
-# Excecute in dev
+## Excecute in dev
 
 1. Clone the repository
 2. Excecute 
@@ -17,3 +17,12 @@ pnpm i -g @nestjs/cli
 ```
 docker-compose up -d
 ```
+5. Run the API with
+```
+pnpm start:dev
+```
+
+## Stack
+* MongoDB
+* Nest
+* Docker
