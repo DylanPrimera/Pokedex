@@ -1,4 +1,9 @@
-import { Injectable } from '@nestjs/common';
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+import {
+  BadRequestException,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { CreatePokemonDto } from './dto/create-pokemon.dto';
 import { UpdatePokemonDto } from './dto/update-pokemon.dto';
 import { Model } from 'mongoose';
@@ -13,8 +18,19 @@ export class PokemonService {
 
   async create(createPokemonDto: CreatePokemonDto) {
     createPokemonDto.name = createPokemonDto.name.toLowerCase();
-    const pokemon = await this.pokemonModel.create(createPokemonDto);
-    return pokemon;
+    try {
+      const pokemon = await this.pokemonModel.create(createPokemonDto);
+      return pokemon;
+    } catch (error) {
+      if (error?.code === 11000) {
+        throw new BadRequestException(
+          `Pokemon ${JSON.stringify(error.keyValue)}' already exists`,
+        );
+      }
+      throw new InternalServerErrorException(
+        `Can't create the pokemon, check server logs`,
+      );
+    }
   }
 
   findAll() {
@@ -29,7 +45,7 @@ export class PokemonService {
     return `This action updates a #${id} pokemon`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} pokemon`;
+  remove(id: string) {
+    console.log(id);
   }
 }
