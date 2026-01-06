@@ -6,11 +6,10 @@ import {
   InternalServerErrorException,
   NotFoundException,
 } from '@nestjs/common';
-import { CreatePokemonDto } from './dto/create-pokemon.dto';
-import { UpdatePokemonDto } from './dto/update-pokemon.dto';
 import { isValidObjectId, Model } from 'mongoose';
 import { Pokemon } from './entities';
 import { InjectModel } from '@nestjs/mongoose';
+import { CreatePokemonDto, UpdatePokemonDto } from './dto';
 
 @Injectable()
 export class PokemonService {

@@ -8,8 +8,7 @@ import {
   Delete,
 } from '@nestjs/common';
 import { PokemonService } from './pokemon.service';
-import { CreatePokemonDto } from './dto/create-pokemon.dto';
-import { UpdatePokemonDto } from './dto/update-pokemon.dto';
+import { CreatePokemonDto, UpdatePokemonDto } from './dto';
 
 @Controller('pokemon')
 export class PokemonController {
