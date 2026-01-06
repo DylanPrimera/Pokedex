@@ -5,13 +5,13 @@
 ## Steps to excecute
 
 1. Clone the repository
-2. Excecute 
-``` 
-pnpm install
-```
-3. You must have Nest CLI installed
+2. You must have Nest CLI installed
 ```
 pnpm i -g @nestjs/cli
+```
+3. Run 
+``` 
+pnpm install
 ```
 4. Setup the DB
 ```
