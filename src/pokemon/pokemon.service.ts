@@ -71,8 +71,14 @@ export class PokemonService {
     }
   }
 
-  remove(id: string) {
-    console.log(id);
+  async remove(id: string) {
+    const pokemon = await this.findOne(id);
+    try {
+      await pokemon.deleteOne();
+      return 'Pokemon deleted successfully';
+    } catch (error) {
+      this.handleExceptions(error);
+    }
   }
 
   private handleExceptions(error: any) {
