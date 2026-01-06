@@ -64,15 +64,26 @@ export class PokemonService {
   }
 
   async update(term: string, updatePokemonDto: UpdatePokemonDto) {
-    const pokemon = await this.findOne(term);
+    try {
+      const pokemon = await this.findOne(term);
 
-    if (updatePokemonDto.name) {
-      updatePokemonDto.name = updatePokemonDto.name.toLocaleLowerCase();
+      if (updatePokemonDto.name) {
+        updatePokemonDto.name = updatePokemonDto.name.toLocaleLowerCase();
+      }
+
+      await pokemon.updateOne(updatePokemonDto, { new: true });
+
+      return { ...pokemon.toJSON(), ...updatePokemonDto };
+    } catch (error) {
+      if (error.code === 11000) {
+        throw new BadRequestException(
+          `Pokemon ${JSON.stringify(error.keyValue)}' already exists`,
+        );
+      }
+      throw new InternalServerErrorException(
+        `Can't update the pokemon, check server logs`,
+      );
     }
-
-    await pokemon.updateOne(updatePokemonDto, { new: true });
-
-    return { ...pokemon.toJSON(), ...updatePokemonDto };
   }
 
   remove(id: string) {
