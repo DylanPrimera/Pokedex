@@ -21,6 +21,10 @@ docker-compose up -d
 ```
 pnpm start:dev
 ```
+6. To charge the DB with data run in Postman
+```
+localhost:3000/api/v1/seed
+```
 
 ## Stack
 * MongoDB
