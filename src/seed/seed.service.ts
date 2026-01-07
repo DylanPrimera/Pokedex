@@ -9,13 +9,13 @@ import { InjectModel } from '@nestjs/mongoose';
 @Injectable()
 export class SeedService {
   constructor(
-    private readonly axiosService: HttpService,
+    private readonly httpService: HttpService,
     @InjectModel(Pokemon.name) private readonly pokemonModel: Model<Pokemon>,
   ) {}
   async excecuteSeed() {
     await this.pokemonModel.deleteMany();
     const { data } = await firstValueFrom(
-      this.axiosService
+      this.httpService
         .get<PokeApiResponse>('https://pokeapi.co/api/v2/pokemon?limit=650')
         .pipe(
           catchError(() => {

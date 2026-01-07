@@ -10,8 +10,10 @@ async function bootstrap() {
     new ValidationPipe({
       whitelist: true,
       forbidNonWhitelisted: true,
+      transform: true, // to ransform DTOS
       transformOptions: {
         exposeUnsetFields: false,
+        enableImplicitConversion: true, // help to know the type of the DTO
       },
     }),
   );
