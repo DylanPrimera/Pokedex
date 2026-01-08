@@ -30,6 +30,11 @@ pnpm start:dev
 localhost:3000/api/v1/seed
 ```
 
+# Production Build
+1. Create the file ```.env.prod```
+2. Fill the environment variables
+3. Build the docker image with ```docker compose -f docker-compose.prod.yaml --env-file .env.prod up --build```
+
 ## Stack
 * MongoDB
 * Nest
