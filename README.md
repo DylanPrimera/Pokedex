@@ -17,11 +17,13 @@ pnpm install
 ```
 docker-compose up -d
 ```
-5. Run the API with
+5. Clone the file ```.env.template``` and rename the copy for ```.env```
+
+6. Run the API with
 ```
 pnpm start:dev
 ```
-6. To charge the DB with data run in Postman
+7. To charge the DB with data run in Postman
 ```
 localhost:3000/api/v1/seed
 ```
