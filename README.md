@@ -19,11 +19,13 @@ docker-compose up -d
 ```
 5. Clone the file ```.env.template``` and rename the copy for ```.env```
 
-6. Run the API with
+6. Fill the enviroment variables defined in the ```.env``` file
+
+7. Run the API with
 ```
 pnpm start:dev
 ```
-7. To charge the DB with data run in Postman
+8. Run seed
 ```
 localhost:3000/api/v1/seed
 ```
